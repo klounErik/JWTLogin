@@ -1,0 +1,57 @@
+@import '../node_modules/antd/dist/antd.css';
+
+.login-form {
+  max-width: 300px;
+}
+.login-form-button {
+  width: 100%;
+}
+
+.loginContainer{
+  position: relative;
+  margin: 15%;
+  display: flex;
+  justify-content: center;
+}
+
+.registrationForm{
+  position: relative;
+  margin-left: 30%;
+  margin-top: 15%; 
+  width: 25%;
+  justify-content: center;
+}
+
+.profile h2{
+  color: black;
+}
+
+.nav{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  font-size: 25px;
+  background-color: black;
+}
+
+.nav a, h2{
+  color: white;
+  margin: 0px;
+  padding: 0px;
+}
+
+.nav a:hover{
+  color: rgb(238, 194, 50);
+}
+
+.user{
+  margin-right: 20px;
+}
+
+.login{
+  margin: 20px;
+}
+.register{
+  margin: 20px;
+}
