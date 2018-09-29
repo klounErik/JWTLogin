@@ -5,7 +5,7 @@ const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
 const app = express()
 const Router = require('../Router/API')
-const PORT = 1234
+const PORT = process.env.PORT || 1234
 
 mongoose.Promise = global.Promise
 mongoose.connect(`mongodb://${process.env.MLAB_USER}:${process.env.MLAB_PASS}${process.env.MLAB_URL}`,{useNewUrlParser: true})

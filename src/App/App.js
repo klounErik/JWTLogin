@@ -10,8 +10,6 @@ import './App.css';
 
 class App extends Component {
   render() {
-
-    console.log(process.env.SECRET)
     return (
     <div className="App">
       <Router>
