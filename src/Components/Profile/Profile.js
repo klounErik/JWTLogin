@@ -1,17 +1,13 @@
 import React from 'react'
-import {checkAuth} from '../../Auth/checkAuth'
+import {verifyToken} from '../../Auth/verifyToken'
+
 import ProfileContainer from './ProfileContainer'
 
 export default class Profile extends React.Component{
-
-    componentWillMount(){
-        checkAuth()
-        .then(res => res ?  null : this.props.history.push('/logout'))
-    }
     render(){
         return(
         <div className="profile">
-        <ProfileContainer {...this.props}/>
+        {verifyToken() ? <ProfileContainer {...this.props}/> : this.props.history.push('/login')}
         </div>)
     }
 }

@@ -189,7 +189,7 @@ export default class RegistrationForm extends React.Component {
           )}
         </FormItem>
         <FormItem {...tailFormItemLayout}>
-          <Button type="primary" htmlType="submit">Register</Button>
+          <Button className="registration-form-button" type="primary" htmlType="submit">Register</Button>
         </FormItem>
       </Form>
       </div>

@@ -1,5 +1,10 @@
 @import '../../node_modules/antd/dist/antd.css';
 
+
+.App{
+  font-family: 'Ubuntu Mono', monospace;
+}
+
 .login-form-button {
   width: 100%;
 }
@@ -17,11 +22,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.959);
   width: 400px;
   height: 375px;
 }
 .login-form{
+  font-family: 'Ubuntu Mono', monospace;
   width: 300px;
 }
 
@@ -39,12 +45,16 @@
   justify-content: center;
   align-items: center;
   background-color: white;
-  width: 450px;
+  width: 500px;
   height: fit-content;
 }
 
 .registration-form{
   width: 400px;
+}
+
+.registration-form-button{
+  width: 100%;
 }
 
 .resetContainer{
@@ -101,36 +111,66 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  color: white;
+  height: 125px;
   font-size: 25px;
+  background-color: rgb(231, 214, 214);
+}
+
+.myprofile {
+  display: flex;
+  margin: 30px;
+}
+
+.nav-signin{
+  display: flex;
+  justify-content: space-evenly;
+  margin: 25px;
+}
+
+.logo{
+  margin: 25px;
+  display: flex;
+  height: 100px;
+  padding: 25px;
+  border-radius: 5px;
+  color: white;
   background-color: black;
+  align-items: center;
+}
+
+.logo h3{
+  text-decoration-line: underline;
+  color: white;
+  margin-top: 10px;
+  margin-bottom: 0px;
+  margin-left: 15px;
+}
+.logo p{
+  font-size: 15px;
 }
 
 .nav a, h2{
-  color: white;
+  color: black;
   margin: 0px;
   padding: 0px;
+}
+.nav a:hover{
+  color: rgb(50, 125, 238);
 }
 
 .homeWrapper{
   height: 100vh;
+  padding: 50px;
   background-color: #222;
   display: flex;
   justify-content: center;
-  align-items: center;
 }
 
-.nav a:hover{
-  color: rgb(238, 194, 50);
+.homeWrapper h1{
+  color: white
 }
 
-.user{
-  margin-right: 20px;
-}
-
-.login{
-  margin: 20px;
-}
-.register{
-  margin: 20px;
+.footer{
+  background-color: rgb(231, 214, 214);
+  height: 100px;
 }
