@@ -1,5 +1,5 @@
 import React from 'react'
-import { Form, Input, Button } from 'antd';
+import { Form, Input, Button, Modal } from 'antd';
 
 const FormItem = Form.Item;
 
@@ -7,7 +7,22 @@ export default class RegistrationForm extends React.Component {
   state = {
     confirmDirty: false,
     autoCompleteResult: [],
+    status: '',
   };
+
+  onSuccess = (status) =>{
+    return Modal.success({
+        title: status
+    },
+    this.props.history.push('/login')
+    )
+    
+  }
+  onError = (status) =>{
+    return Modal.error({
+      title: status
+    })
+  } 
 
   handleSubmit = (e) => {
     e.preventDefault();
@@ -24,15 +39,14 @@ export default class RegistrationForm extends React.Component {
             firstname: values.firstname,
             lastname: values.lastname,
             email: values.email,
-            city: values.city
+            country: values.country
           })
         })
+        console.log(values)
           if(res.ok === true){
-            this.props.history.push('/login')
+            res.text().then(status => this.onSuccess(status))
           }else{
-            console.log('Could not create User!')
-            console.log(values)
-            console.log(res)
+            res.text().then(status => this.onError(status))
           }
         }
       })
@@ -86,29 +100,41 @@ export default class RegistrationForm extends React.Component {
       },
     };
     return (
-      <Form onSubmit={this.handleSubmit}>
+      <div className="registrationForm">
+      <Form onSubmit={this.handleSubmit} className="registration-form">
+       <h1>Register</h1>
       <FormItem
           {...formItemLayout}
           label="First Name"
         >
-          {getFieldDecorator('firstname', {
-            rules: [{ required: true, message: 'Please input your First Name!', whitespace: true }],
-          })(
-            <Input />
-          )}
+        {getFieldDecorator('firstname')
+         (
+          <Input />
+         ) 
+        }         
         </FormItem>
         <FormItem
           {...formItemLayout}
           label="Last Name"
         >
-          {getFieldDecorator('lastname', {
-            rules: [{ required: true, message: 'Please input your Last Name!', whitespace: true }],
-          })(
-            <Input />
-          )}
+        {getFieldDecorator('lastname')
+         (
+          <Input />
+         ) 
+        }  
         </FormItem>
-        
-       <FormItem
+        <FormItem
+          {...formItemLayout}
+          label="Country"
+          
+        >
+        {getFieldDecorator('country')
+         (
+          <Input />
+         ) 
+        }  
+        </FormItem>
+        <FormItem
           {...formItemLayout}
           label="E-mail"
         >
@@ -118,16 +144,6 @@ export default class RegistrationForm extends React.Component {
             }, {
               required: true, message: 'Please input your E-mail!',
             }],
-          })(
-            <Input />
-          )}
-        </FormItem>
-        <FormItem
-          {...formItemLayout}
-          label="City"
-        >
-          {getFieldDecorator('city', {
-            rules: [{ required: true, message: 'Please input your City!', whitespace: true }],
           })(
             <Input />
           )}
@@ -176,6 +192,7 @@ export default class RegistrationForm extends React.Component {
           <Button type="primary" htmlType="submit">Register</Button>
         </FormItem>
       </Form>
+      </div>
     );
   }
 }

@@ -9,8 +9,9 @@ export default class Profile extends React.Component{
         .then(res => res ?  null : this.props.history.push('/logout'))
     }
     render(){
-        return(<div className="profile">
-        <ProfileContainer/>
+        return(
+        <div className="profile">
+        <ProfileContainer {...this.props}/>
         </div>)
     }
 }

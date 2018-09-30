@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import Login from '../Components/Login/Login'
 import Home from '../Components/Home/Home'
+import Reset from '../Components/Login/Reset'
 import Profile from '../Components/Profile/Profile'
 import Register from '../Components/Register/Register'
 import Logout from '../Components/Login/logout'
@@ -16,6 +17,7 @@ class App extends Component {
         <div>
           <Route path="/" render={props => (<Nav {...props}/>)}/>
           <Route path="/logout" render={props => (<Logout {...props}/>)}/>
+          <Route path="/reset" render={props => (<Reset {...props}/>)}/>
           <Route path="/profile" render={props => (<Profile {...props}/>)}/>
           <Route path="/register" render={props => (<Register {...props}/>)}/>
           <Route path="/login" render={props => (<Login {...props}/>)}/>

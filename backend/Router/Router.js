@@ -6,7 +6,7 @@ const Users = require('../Schemas/userSchema')
 const checkHeader = require('../Auth/CheckHeader')
 const verifyToken = require('../Auth/VerifyToken')
 
-Router.get('/users', (req,res) =>{
+Router.get('/users', (req,res) => {
     Users.find({})
     .then(function(users){
         res.send(users)
@@ -24,6 +24,7 @@ Router.get('/user/:id', (req,res)=>{
 })
 
 Router.get('/home', checkHeader, verifyToken, (req,res) =>{
+    
 })
 
 Router.post('/createuser', (req,res) =>{
@@ -31,18 +32,18 @@ Router.post('/createuser', (req,res) =>{
         firstname: req.body.firstname,
         lastname: req.body.lastname,
         email: req.body.email,
-        city: req.body.city,
+        country: req.body.country,
         username: req.body.username,
         password: bcrypt.hashSync(req.body.password, 10)
     }
     Users.findOne({email: user.email})
     .then(function(result){
-        if(result === null){
-            Users.create(user).then(function(user){
-                res.send(user)
+        if(result === null || undefined){
+            Users.create(user).then(function(){
+                res.status(200).send('User created!')
             })
         }else{
-            res.sendStatus(500)
+            res.status(500).send('User could not be created')
         }
     })
 })
@@ -54,17 +55,18 @@ Router.post('/login', (req,res)=>{
     }
     Users.findOne({username: user.username})
     .then(function(result){
-        try{
+        if(result === null){
+            res.send(404, 'Could not find user')
+        }else{
         if(bcrypt.compareSync(user.password, result.password)){
             const token = jwt.sign({
-                exp: Math.floor(Date.now() / 1000) + 60,
+                exp: Math.floor(Date.now() / 1000) + (60 * 60),
                 user: {
                     _id: result.id,
-                    img: result.img,
                     email: result.email,
                     firstname: result.firstname,
                     lastname: result.lastname,
-                    city: result.city,
+                    country: result.country,
                     username: user.username,
                     password: user.password
                 }
@@ -76,8 +78,6 @@ Router.post('/login', (req,res)=>{
         }else{
             res.status(403).send('Invalid credentials')
         }
-    }catch(err){
-        console.log(err)
     }
     })
 })

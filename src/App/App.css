@@ -1,29 +1,100 @@
 @import '../../node_modules/antd/dist/antd.css';
 
-.login-form {
-  max-width: 300px;
-}
 .login-form-button {
   width: 100%;
 }
 
 .loginContainer{
-  position: relative;
-  margin: 15%;
+  height: 100vh;
+  background-color: #222;
   display: flex;
   justify-content: center;
+  align-items: center;
+}
+
+.loginForm{
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  width: 400px;
+  height: 375px;
+}
+.login-form{
+  width: 300px;
+}
+
+.registerContainer{
+  height: 100vh;
+  background-color: #222;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .registrationForm{
-  position: relative;
-  margin-left: 30%;
-  margin-top: 15%; 
-  width: 25%;
+  border-radius: 10px;
+  display: flex;
   justify-content: center;
+  align-items: center;
+  background-color: white;
+  width: 450px;
+  height: fit-content;
+}
+
+.registration-form{
+  width: 400px;
+}
+
+.resetContainer{
+  height: 100vh;
+  background-color: #222;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.reset{
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  width: 400px;
+  height: 150px;
+}
+
+.loginError{
+  border-radius: 5px;
+  background-color: rgb(216, 72, 72);
+}
+.loginError h3{
+  color: white;
+}
+
+.profile{
+  color: black;
+  height: 100vh;
+  background-color: #222;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .profile h2{
   color: black;
+}
+
+.profileContainer{
+  color: black;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  width: 400px;
+  height: 450px;
 }
 
 .nav{
@@ -39,6 +110,14 @@
   color: white;
   margin: 0px;
   padding: 0px;
+}
+
+.homeWrapper{
+  height: 100vh;
+  background-color: #222;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .nav a:hover{

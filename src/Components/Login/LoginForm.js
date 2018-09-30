@@ -10,7 +10,7 @@ export default class NormalLoginForm extends React.Component {
     super(props)
     
     this.state = {
-      loginSuccess: undefined
+      showError: false 
     }
   }
   
@@ -27,19 +27,26 @@ export default class NormalLoginForm extends React.Component {
         })
           if(res.ok === true){
                 localStorage.setItem('token', res.headers.get('Authorization'))
-                this.props.history.push('/home')
+                  this.props.history.push('/home')
               }else{
                 localStorage.clear()
+                res.text().then(status => this.setState({showError: true}))
               }
-          }
+            }
         })
       }
   render() {
     const { getFieldDecorator } = this.props.form;
     return (
-      <div>
+      <div className="loginForm">
       {verifyToken() ? <Redirect to="/home"/> :
       <Form onSubmit={this.handleSubmit} className="login-form">
+      <h3>Login</h3>
+      {this.state.showError ? 
+      <div className="loginError">
+        <h3>Invalid Credentials</h3>
+      </div> 
+      : null}
         <FormItem>
           {getFieldDecorator('userName', {
             rules: [{ required: true, message: 'Please input your username!' }],
@@ -63,8 +70,9 @@ export default class NormalLoginForm extends React.Component {
             Log in
           </Button> 
           }
-          Or <a href="/register">register now!</a>
+          <h3>Or <a href="/register">Register now!</a></h3>
         </FormItem>
+        <h3>Having trouble logging in?<br/><a href="/reset">Reset password</a></h3>
       </Form>
       }
       </div>
