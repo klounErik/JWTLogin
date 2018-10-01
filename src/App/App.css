@@ -5,6 +5,18 @@
   font-family: 'Ubuntu Mono', monospace;
 }
 
+@keyframes spin {
+  from {transform: rotate(0deg)}
+  to {transform: rotate(180deg)}
+}
+
+#jwt{
+  animation-name: spin;
+  animation-duration: 10s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
 .login-form-button {
   width: 100%;
 }
@@ -75,9 +87,41 @@
   height: 150px;
 }
 
+.newPasswordContainer{
+  height: 100vh;
+  background-color: #222;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.newPassword{
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  width: 450px;
+  height: 300px;
+}
+
+.newPassword-form{
+  display: flex;
+  width: 400px;
+  flex-direction: column;
+  margin: 0px;
+  padding: 0px;
+}
+
+@keyframes shake {
+  from {bottom: 0px}
+  to {bottom: 3px}
+}
+
 .loginError{
+  position: relative;
   border-radius: 5px;
   background-color: rgb(216, 72, 72);
+  animation: shake 0.5s linear alternate infinite;
 }
 .loginError h3{
   color: white;

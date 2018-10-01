@@ -6,13 +6,9 @@ import { Form, Icon, Input, Button} from 'antd';
 const FormItem = Form.Item;
 
 export default class NormalLoginForm extends React.Component {
-  constructor(props){
-    super(props)
-    
-    this.state = {
+  state = {
       showError: false 
     }
-  }
   
   handleSubmit = (e) => {
     e.preventDefault();

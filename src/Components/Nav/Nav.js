@@ -1,15 +1,13 @@
 import React from 'react'
 import {verifyToken} from '../../Auth/verifyToken'
-import {decodeToken} from '../../Auth/decodeToken'
 import jwt from '../../images/jwt.png'
-import {Icon} from 'antd'
 
 export default class Nav extends React.Component{
     render(){
         return(
             <div className="nav">
                 <div className="logo">
-                   <a href="/home"><img id="jwt" height={75} src={jwt}/></a>
+                   <a href="/home"><img alt="" id="jwt" height={75} src={jwt}/></a>
                     <div className="logotext">
                     <h3>JWT Login</h3>
                     <p>A JWT project</p>

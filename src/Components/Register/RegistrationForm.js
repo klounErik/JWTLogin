@@ -16,7 +16,6 @@ export default class RegistrationForm extends React.Component {
     },
     this.props.history.push('/login')
     )
-    
   }
   onError = (status) =>{
     return Modal.error({
@@ -42,11 +41,10 @@ export default class RegistrationForm extends React.Component {
             country: values.country
           })
         })
-        console.log(values)
           if(res.ok === true){
-            res.text().then(status => this.onSuccess(status))
+            res.json().then(status => this.onSuccess(status))
           }else{
-            res.text().then(status => this.onError(status))
+            res.json().then(status => this.onError(status))
           }
         }
       })
@@ -107,32 +105,20 @@ export default class RegistrationForm extends React.Component {
           {...formItemLayout}
           label="First Name"
         >
-        {getFieldDecorator('firstname')
-         (
-          <Input />
-         ) 
-        }         
+        {getFieldDecorator('firstname')(<Input />)}         
         </FormItem>
         <FormItem
           {...formItemLayout}
           label="Last Name"
         >
-        {getFieldDecorator('lastname')
-         (
-          <Input />
-         ) 
-        }  
+        {getFieldDecorator('lastname')(<Input />)}  
         </FormItem>
         <FormItem
           {...formItemLayout}
           label="Country"
           
         >
-        {getFieldDecorator('country')
-         (
-          <Input />
-         ) 
-        }  
+        {getFieldDecorator('country')(<Input />)}  
         </FormItem>
         <FormItem
           {...formItemLayout}

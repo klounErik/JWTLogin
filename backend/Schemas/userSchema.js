@@ -17,6 +17,14 @@ const userSchema = new Schema({
         type: String,
         required: [true, 'Password is required']
     },
+    reset_token: {
+        type: String,
+        default: undefined
+    },
+    reset_token_expires: {
+    type: Date,
+    default: undefined
+    }
 })
 
 const User = mongoose.model('users', userSchema)
