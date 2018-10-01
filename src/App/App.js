@@ -19,7 +19,7 @@ class App extends Component {
         <div>
           <Route path="/" render={props => (<Nav {...props}/>)}/>
           <Route path="/login" render={props => (<Login {...props}/>)}/>
-          <Route path="/home" render={props => (<Home {...props}/>)}/>
+          <Route path="/" render={props => (<Home {...props}/>)}/>
           <Route path="/logout" render={props => (<Logout {...props}/>)}/>
           <Route path="/reset" render={props => (<Reset {...props}/>)}/>
           <Route path="/newpassword/:token" render={props => (<NewPassword {...props}/>)}/>
