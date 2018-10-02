@@ -5,6 +5,7 @@ const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
 const app = express()
 const Router = require('../Router/Router')
+const Post = require('../Router/Post')
 
 mongoose.Promise = global.Promise
 mongoose.connect(`mongodb://${process.env.MLAB_USER}:${process.env.MLAB_PASS}${process.env.MLAB_URL}`,{useNewUrlParser: true})
@@ -13,10 +14,12 @@ app.use(cors({
     exposedHeaders:['Authorization'],
     allowedHeaders: ['Content-type', 'Authorization',]
 }))
+
 app.use(bodyParser.json())
 app.use('/api', Router)
+app.use('/post', Post)
 
-app.listen(process.env.PORT || 1234, (err)=>{
+app.listen(process.env.PORT || 1234, (err) => {
     if(err){
         console.log('Could not connect to server')
     }

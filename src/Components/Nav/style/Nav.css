@@ -1,0 +1,25 @@
+.nav-nav{
+    display: flex;
+    justify-content: space-between;
+}
+
+.logo{
+    display: flex;
+    align-items: center;
+}
+
+.menu a {
+    font-size: 20px;
+}
+
+.logo h1{
+    display: inline;
+    margin-left: 15px;
+    color: white;
+    text-decoration-line: underline;
+}
+
+.ant-dropdown-link{
+    color: white;
+    font-size: 30px;
+}

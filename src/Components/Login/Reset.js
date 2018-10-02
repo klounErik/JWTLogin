@@ -45,7 +45,7 @@ export default class Reset extends React.Component{
                     <form onSubmit={this.handleSubmit.bind(this)}>
                         <label>E-mail</label>
                         <Input onChange={(e) => this.setState({email: e.target.value})} />
-                        <Button htmlType="submit">Submit</Button>
+                        <Button id="reset-button" htmlType="submit">Submit</Button>
                     </form>
                     </div>
                 </div>

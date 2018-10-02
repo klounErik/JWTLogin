@@ -8,7 +8,6 @@ const userSchema = new Schema({
         type: String,
         required: [true, 'email is required']
     },
-    country: String,
     username: {
         type: String,
         required: [true, 'username is required']
@@ -16,14 +15,6 @@ const userSchema = new Schema({
     password: {
         type: String,
         required: [true, 'Password is required']
-    },
-    reset_token: {
-        type: String,
-        default: undefined
-    },
-    reset_token_expires: {
-    type: Date,
-    default: undefined
     }
 })
 

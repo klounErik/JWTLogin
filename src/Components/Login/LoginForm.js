@@ -1,6 +1,4 @@
 import React from 'react'
-import {verifyToken} from '../../Auth/verifyToken'
-import {Redirect} from 'react-router'
 import { Form, Icon, Input, Button} from 'antd';
 
 const FormItem = Form.Item;
@@ -19,11 +17,11 @@ export default class NormalLoginForm extends React.Component {
             headers: {
                 'Content-type': 'application/json',
             },
-            body: JSON.stringify({username: values.userName, password: values.password})
+            body: JSON.stringify({email: values.email, password: values.password})
         })
           if(res.ok === true){
                 localStorage.setItem('token', res.headers.get('Authorization'))
-                  this.props.history.push('/home')
+                  this.props.history.push('/')
               }else{
                 localStorage.clear()
                 res.text().then(status => this.setState({showError: true}))
@@ -35,7 +33,6 @@ export default class NormalLoginForm extends React.Component {
     const { getFieldDecorator } = this.props.form;
     return (
       <div className="loginForm">
-      {verifyToken() ? <Redirect to="/home"/> :
       <Form onSubmit={this.handleSubmit} className="login-form">
       <h3>Login</h3>
       {this.state.showError ? 
@@ -44,10 +41,10 @@ export default class NormalLoginForm extends React.Component {
       </div> 
       : null}
         <FormItem>
-          {getFieldDecorator('userName', {
-            rules: [{ required: true, message: 'Please input your username!' }],
+          {getFieldDecorator('email', {
+            rules: [{ required: true, message: 'Please input your email!' }],
           })(
-            <Input prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="Username" />
+            <Input prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="Email" />
           )}
         </FormItem>
         <FormItem>
@@ -70,7 +67,6 @@ export default class NormalLoginForm extends React.Component {
         </FormItem>
         <h3>Having trouble logging in?<br/><a href="/reset">Reset password</a></h3>
       </Form>
-      }
       </div>
     );
   }

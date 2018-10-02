@@ -26,6 +26,7 @@ export default class RegistrationForm extends React.Component {
   handleSubmit = (e) => {
     e.preventDefault();
     this.props.form.validateFieldsAndScroll(async (err, values) => {
+      console.log(values)
       if (!err) {
         const res = await fetch('http://localhost:1234/api/createuser', {
           method: 'POST',
@@ -37,8 +38,7 @@ export default class RegistrationForm extends React.Component {
             password: values.confirm,
             firstname: values.firstname,
             lastname: values.lastname,
-            email: values.email,
-            country: values.country
+            email: values.email
           })
         })
           if(res.ok === true){
@@ -77,8 +77,8 @@ export default class RegistrationForm extends React.Component {
 
     const formItemLayout = {
       labelCol: {
-        xs: { span: 24 },
-        sm: { span: 8 },
+        xs: { span: 26 },
+        sm: { span: 10 },
       },
       wrapperCol: {
         xs: { span: 24 },
@@ -112,13 +112,6 @@ export default class RegistrationForm extends React.Component {
           label="Last Name"
         >
         {getFieldDecorator('lastname')(<Input />)}  
-        </FormItem>
-        <FormItem
-          {...formItemLayout}
-          label="Country"
-          
-        >
-        {getFieldDecorator('country')(<Input />)}  
         </FormItem>
         <FormItem
           {...formItemLayout}
@@ -166,7 +159,7 @@ export default class RegistrationForm extends React.Component {
         >
           {getFieldDecorator('confirm', {
             rules: [{
-              required: true, message: 'Please confirm your password!',
+              required: true, message: 'confirm your password!',
             }, {
               validator: this.compareToFirstPassword,
             }],

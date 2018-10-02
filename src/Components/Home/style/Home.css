@@ -1,0 +1,31 @@
+.homeWrapper{
+    height: 100vh;
+    background-color: rgb(223, 61, 61);
+    text-align: center;
+}
+.homeWrapper h1{
+    color: white;
+}
+
+.textContainer{
+    position: relative;
+    top: 100px;
+    background-color: #001529;
+    color: white;
+    margin-left: 25%;
+    margin-right: 25%;
+    text-align: center;
+}
+.textContainer a{
+    color: red;
+}
+
+.textHeader h3{
+    color: white;
+}
+
+.textBody{
+    width: fit-content;
+    padding: 100px;
+    font-size: 20px;
+}

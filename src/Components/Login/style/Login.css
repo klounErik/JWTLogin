@@ -1,0 +1,58 @@
+.login-form-button {
+    width: 100%;
+  }
+  
+  .loginError{
+    background-color: rgb(224, 59, 59);
+    text-align: center;
+    border-radius: 5px;
+  }
+  
+  .loginError h3{
+    color: white;
+  }
+
+  .loginContainer{
+    height: 100vh;
+    background-color: rgb(194, 58, 58);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .loginForm{
+    border-radius: 10px;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.959);
+    width: 400px;
+    height: 375px;
+  }
+  .login-form{
+    font-family: 'Ubuntu Mono', monospace;
+    width: 300px;
+  }
+  .resetContainer{
+    height: 100vh;
+    background-color: rgb(194, 58, 58);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  } 
+
+  .reset{
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.959);
+    width: 400px;
+    height: 150px
+  }
+
+  #reset-button{
+    margin-top: 10px;
+  }

@@ -15,7 +15,6 @@ let smtpTransport = nodemailer.createTransport({
     }
   });
 
-
 Router.get('/users', (req,res) => {
     Users.find({})
     .then(function(users){
@@ -33,37 +32,40 @@ Router.get('/user/:id', (req,res)=>{
     })
 })
 
-Router.get('/home', checkHeader, verifyToken, (req,res) =>{
-    
-})
 
 Router.post('/createuser', (req,res) =>{
     const user = {
         firstname: req.body.firstname,
         lastname: req.body.lastname,
         email: req.body.email,
-        country: req.body.country,
         username: req.body.username,
         password: bcrypt.hashSync(req.body.password, 10)
     }
     Users.findOne({email: user.email})
     .then(function(result){
-        if(result === null || undefined){
-            Users.create(user).then(function(){
-                res.status(200).json('User created!')
-            })
-        }else{
-            res.status(500).json('User could not be created')
-        }
+        Users.findOne({username: user.username})
+        .then(function(username){
+            if(result === null){
+                if(username === null){
+                    Users.create(user).then(function(){
+                        res.status(200).json('User created!')
+                    })
+                }else{
+                    res.status(500).json('Username taken')
+                }   
+            }else{
+                res.status(500).json('Email taken')
+            }
+        })
     })
 })
 
 Router.post('/login', (req,res)=>{
     const user = {
-        username: req.body.username,
+        email: req.body.email,
         password: req.body.password
     }
-    Users.findOne({username: user.username})
+    Users.findOne({email: user.email})
     .then(function(result){
         if(result === null){
             res.status(404).json('Invalid credentials')
@@ -77,7 +79,7 @@ Router.post('/login', (req,res)=>{
                     firstname: result.firstname,
                     lastname: result.lastname,
                     country: result.country,
-                    username: user.username,
+                    username: result.username,
                     password: user.password
                 }
             }, process.env.SECRET)
@@ -98,6 +100,40 @@ Router.delete('/deleteuser/:id', (req,res) =>{
           res.send(user)
         } else {
           res.status(404)
+        }
+    })
+})
+
+Router.put('/changepassword/:id', (req,res) => {
+    const changePassword = {
+        oldpassword: req.body.oldpassword,
+        newpassword: req.body.newpassword
+    }
+
+    Users.findById({_id: req.params.id})
+    .then(function(result){
+        if(bcrypt.compareSync(changePassword.oldpassword, result.password)){
+            Users.findOneAndUpdate({_id: result._id, password: bcrypt.hashSync(changePassword.newpassword, 10)})
+            .then(function(){
+                res.status(200).json('Password Changed!')
+            })
+        }else{
+            res.status(404).json('Password has no been changed!')
+        }
+    })
+})
+
+
+Router.put('/changeusername/:id/:newusername', (req,res) => {
+    Users.findOne({username: req.params.newusername})
+    .then(function(result){
+        if(result === null){
+            Users.findOneAndUpdate({_id: req.params.id, username: req.params.newusername})
+            .then(function(){
+                res.status(200).json('Username Changed!')
+            })
+        }else{
+            res.status(500).json('Username taken!')
         }
     })
 })
@@ -138,22 +174,12 @@ Router.post('/resetpassword', (req,res) =>{
                             res.status(500).json('Could not reset password')
                         }
                     })
-            }
+                }
             })
         }else{
             res.status(404).json('Could not reset password')
         }
         })
     })
-
-Router.put('/updateprofile/:id', (req,res)=>{
-    Users.findOneAndUpdate({
-        _id: req.params.id, 
-         img: req.body.img,
-    })
-    .then(function(user){
-        res.send(user)
-    })
-})
 
 module.exports = Router

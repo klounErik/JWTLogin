@@ -1,0 +1,31 @@
+.registerContainer{
+    height: 100vh;
+    background-color: rgb(194, 58, 58);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.registrationForm{
+    border-radius: 10px;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.959);
+    width: 500px;
+}
+
+.registration-form{
+    text-align: center;
+    position: relative;
+    left: 13%;
+}
+.registration-form h1{
+    position: relative;
+    right: 50px;
+}
+.registration-form-button{
+    position: relative;
+    right: 105px;
+    width: 100%;
+}
