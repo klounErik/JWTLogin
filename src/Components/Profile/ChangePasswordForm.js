@@ -7,7 +7,6 @@ export default class ChangePasswordForm extends Component {
         return Modal.success({
             title: status
         },
-        this.props.history.push('/login')
         )
     }
     onError = (status) =>{
