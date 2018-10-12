@@ -1,6 +1,6 @@
 import React from 'react'
-import {verifyToken} from '../../Auth/verifyToken'
-import './style/Profile.css'
+import {verifyToken} from '../../../Auth/verifyToken'
+import '../style/Profile.css'
 
 import ProfileContainer from './ProfileContainer'
 

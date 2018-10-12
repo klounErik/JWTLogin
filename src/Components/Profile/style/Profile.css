@@ -7,6 +7,8 @@
 }
 
 .profileContainer{
+    position: relative;
+    bottom: 10%;
     border-radius: 10px;
     display: flex;
     text-align: center;
@@ -14,7 +16,7 @@
     align-items: center;
     background-color: rgba(255, 255, 255, 0.959);
     width: 400px;
-    height: 550px;
+    height: 450px;
 }
 
 .changepasswordContainer{
@@ -45,6 +47,8 @@
 }
 
 .changeUsernameForm{
+    position: relative;
+    bottom: 10%;
     border-radius: 10px;
     display: flex;
     text-align: center;
@@ -52,5 +56,31 @@
     align-items: center;
     background-color: rgba(255, 255, 255, 0.959);
     width: 300px;
-    height: 300px;
+    height: 250px;
+}
+
+.sendMessage{
+    display: flex;
+    align-self: center;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+}
+
+#closeform{
+    float: right;
+}
+
+
+.sendMessageForm{
+    text-align: center;
+    display: flex;
+    width: 300px;
+    flex-direction: column;
+    justify-content: center;
+
+}
+
+.messageContainer{
+    background-color: rgb(194, 58, 58);
 }

@@ -3,11 +3,11 @@ import { Form, Icon, Input, Button} from 'antd';
 
 const FormItem = Form.Item;
 
-export default class NormalLoginForm extends React.Component {
+class NormalLoginForm extends React.Component {
   state = {
-      showError: false 
-    }
-  
+    showError: false
+  }
+
   handleSubmit = (e) => {
     e.preventDefault();
     this.props.form.validateFields(async (err, values) => {
@@ -71,3 +71,5 @@ export default class NormalLoginForm extends React.Component {
     );
   }
 }
+
+export default NormalLoginForm

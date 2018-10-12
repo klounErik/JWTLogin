@@ -1,11 +1,11 @@
 const jwt = require('jsonwebtoken')
 
-verifyToken = (req,res,next) => {
+const verifyToken = (req,res,next) => {
     jwt.verify(req.token, process.env.SECRET, (err)=>{
-        if(err){
-            res.send(false)
-        }else{
+        if(!err){
             res.send(true)
+        }else{
+            res.send(false)
             next()
         }
     })

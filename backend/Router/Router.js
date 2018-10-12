@@ -22,6 +22,23 @@ Router.get('/users', (req,res) => {
     })
 })
 
+Router.get('/finduser/', (req,res) =>{
+   Users.findOne({username: req.query.username})
+   .then(function(user){
+       res.send(user)
+   }) 
+})
+
+Router.get('/user/:id', (req, res)=>{
+    Users.findById(req.params.id).then(function(user){
+        if(user !== null){
+            res.send(user)
+        }else{
+            res.status(404)
+        }
+    })
+})
+
 Router.post('/auth', checkHeader, verifyToken, (req,res) =>{
         
 })

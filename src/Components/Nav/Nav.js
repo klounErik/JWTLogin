@@ -8,22 +8,19 @@ import './style/Nav.css'
 const menu = (
     <Menu theme="dark">
         <Menu.Item id="profile" key="/profile">
-            <a href="/profile"><Icon type="user"/>My Profile</a>
+            {/* <a href={`/profile/${decodeToken().user._id}`}><Icon type="user"/>My Profile</a> */}
         </Menu.Item>
-        <Menu.Item id="posts"  key="/posts">
-            <a href="/posts"><Icon type="mail"/>Messages</a>
+        <Menu.Item id="posts"  key="/inbox">
+            <a href="/inbox"><Icon type="mail"/>Inbox</a>
         </Menu.Item>
         <Menu.Item id="logout"  key="/logout">
             <a href="/logout"><Icon type="logout"/>Logout</a>
         </Menu.Item>
     </Menu>
-
-)
+    )
 
 export default class Nav extends React.Component{
     render(){
-   
-    
         return(
             <div className="nav-nav">
                 <div className="logo">
@@ -37,13 +34,13 @@ export default class Nav extends React.Component{
                     className="menu"
                     theme="dark"
                     mode="horizontal"
-                    style={{lineHeight: '100px'}}
+                    style={{lineHeight: '90px'}}
                     >
                     {verifyToken() ? 
                         <Dropdown placement="topCenter" overlay={menu}>
                         <a className="ant-dropdown-link" href="#">
                         <Icon style={{fontSize: '30px'}} type="user" />
-                        {decodeToken().user.username.charAt(0).toUpperCase() + decodeToken().user.username.slice(1)}
+                        {/* {decodeToken().user.username.charAt(0).toUpperCase() + decodeToken().user.username.slice(1)} */}
                         </a>
                         </Dropdown>
                         :

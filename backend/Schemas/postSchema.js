@@ -7,9 +7,8 @@ const postSchema = new Schema({
         required: [true, 'Post title required']
     },
     date: {
-        type: Date,
+        type: String,
         required: true,
-        default: Date.now
     },
     content: {
         type: String,

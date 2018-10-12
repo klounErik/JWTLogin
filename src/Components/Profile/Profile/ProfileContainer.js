@@ -1,6 +1,6 @@
 import React from 'react'
 import {Button, Popconfirm, message } from 'antd'
-import {decodeToken} from '../../Auth/decodeToken'
+import {decodeToken} from '../../../Auth/decodeToken'
 
 export default class ProfileContainer extends React.Component{
 
@@ -10,7 +10,12 @@ export default class ProfileContainer extends React.Component{
     localStorage.clear()
     this.props.history.push('/home')
   }
-
+    // getUser = async () =>{
+    //   const res = await fetch(`http://localhost:1234/api/user/${decodeToken().user._id}`)
+    //   const req = await res.json()
+    //   console.log(req)
+    // }
+      
     deleteUser = async (id) =>{
       const res = await fetch(`http://localhost:1234/api/deleteuser/${id}`,{
         method: 'DELETE'
@@ -18,7 +23,6 @@ export default class ProfileContainer extends React.Component{
       const req = await res.json()
       console.log(req)
     }
-
 
   render(){
     console.log(decodeToken())

@@ -1,8 +1,7 @@
 import React from 'react'
 import './style/Home.css'
 
-
-export default class Home extends React.Component{
+class Home extends React.Component{
     render(){
         return(
         <div className="homeWrapper">
@@ -14,6 +13,7 @@ export default class Home extends React.Component{
                 <div className="textBody">
                     <article>
                         <span>
+                            <h2 style={{color: 'white'}}>V.0.1</h2>
                             <p><strong>JWT Login</strong> is a page for submitting post on forums and sending PM to other users.
                             I made this to learn about JWT and how to establish a secure way of authenticating users.
                             I also made this because i simply <strong>love</strong> to code!
@@ -40,3 +40,5 @@ export default class Home extends React.Component{
         </div>
         )}
     }
+
+export default Home
